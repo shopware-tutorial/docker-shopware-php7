@@ -32,8 +32,8 @@ Port: 2222
 Path to shop: /var/www/shopware
   
 #### Database
-Host: 192.168.99.100
-Local-Host: 127.0.0.1  
+Host: 192.168.99.100  
+Local-Host: 127.0.0.1   
 Login: docker  
 Password: docker   
 Port: 3306
