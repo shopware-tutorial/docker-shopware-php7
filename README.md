@@ -36,9 +36,3 @@ Hots: 127.0.0.1
 Login: docker  
 Password: docker   
 Port: 3306
-
-
-#### Shoppath
-
-
-  
