@@ -1,5 +1,7 @@
 # Shopware with Docker
 
+Url: <http://shopware.local.docker>
+
 ## Init
 
 First step: 
@@ -37,3 +39,6 @@ Local-Host: 127.0.0.1
 Login: docker  
 Password: docker   
 Port: 3306
+
+
+
