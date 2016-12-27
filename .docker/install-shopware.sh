@@ -4,9 +4,6 @@
 
 echo "MySQL:"
 
-USER="docker"
-PASS="docker"
-
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "=> Connection established?"
@@ -38,18 +35,14 @@ unzip test_images.zip
 echo "Add var-dumper"
 php composer.phar require symfony/var-dumper --no-interaction --optimize-autoloader
 
-
-echo "Set permissions"
-chown -Rf docker:docker /var/www
-
 echo "Generate Theme"
 php bin/console sw:theme:cache:generate
 
-
-chown -Rf docker:docker /var/www
 chmod 0777 /var/www/shopware/config.php
 chmod -Rf 0777 /var/www/shopware/var/cache
 chmod -Rf 0777 /var/www/shopware/web
 
+echo "Set permissions"
+chown -Rf docker:docker /var/www
 
 mysqladmin -uroot shutdown
