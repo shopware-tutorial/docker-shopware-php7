@@ -38,6 +38,9 @@ php composer.phar require symfony/var-dumper --no-interaction --optimize-autoloa
 echo "Generate Theme"
 php bin/console sw:theme:cache:generate
 
+echo "media migrate - fix for: images are not showing on the page"
+php bin/console sw:media:migrate
+
 chmod 0777 /var/www/shopware/config.php
 chmod -Rf 0777 /var/www/shopware/var/cache
 chmod -Rf 0777 /var/www/shopware/web
