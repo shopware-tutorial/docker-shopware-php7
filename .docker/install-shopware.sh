@@ -12,6 +12,8 @@ while [[ RET -ne 0 ]]; do
     RET=$?
 done
 
+start=$(date +%s)
+
 mysql -uroot -e "CREATE DATABASE IF NOT EXISTS shopware DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';"
 
 echo "Shopware:"
@@ -49,3 +51,10 @@ echo "Set permissions"
 chown -Rf docker:docker /var/www
 
 mysqladmin -uroot shutdown
+
+end=$(date +%s)
+runtime=$(python -c "print '%u:%02u' % ((${end} - ${start})/60, (${end} - ${start})%60)")
+
+echo "---------"
+echo "Runtime: ${runtime}"
+echo "---------"
