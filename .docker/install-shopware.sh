@@ -1,20 +1,21 @@
 #!/bin/bash
 
-/usr/bin/mysqld_safe > /dev/null 2>&1 &
+bash /opt/docker/scripts/start-mysql.sh
 
+bash /opt/docker/scripts/start-mysql.sh
 echo "MySQL:"
 
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "=> Connection established?"
     sleep 5
-    mysql -uroot -e "status" > /dev/null 2>&1
+    mysql -udocker -pdocker -e "status" #> /dev/null 2>&1
     RET=$?
 done
 
 start=$(date +%s)
 
-mysql -uroot -e "CREATE DATABASE IF NOT EXISTS shopware DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';"
+mysql -udocker -pdocker -e "CREATE DATABASE IF NOT EXISTS shopware DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';"
 
 echo "Shopware:"
 git clone https://github.com/shopware/shopware.git /var/www/shopware
@@ -48,9 +49,8 @@ chmod -Rf 0777 /var/www/shopware/var/cache
 chmod -Rf 0777 /var/www/shopware/web
 
 echo "Set permissions"
-chown -Rf docker:docker /var/www
+chown -Rf www-data:www-data /var/www
 
-mysqladmin -uroot shutdown
 
 end=$(date +%s)
 runtime=$(python -c "print '%u:%02u' % ((${end} - ${start})/60, (${end} - ${start})%60)")
