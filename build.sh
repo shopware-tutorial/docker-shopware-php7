@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t wesolowski/shopware-php7 .
+docker build -t wesolowski/shopware-php72 .

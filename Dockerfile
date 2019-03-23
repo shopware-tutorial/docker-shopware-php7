@@ -1,4 +1,4 @@
-FROM nxswesolowski/ubuntu-php:7.0
+FROM nxswesolowski/ubuntu-php:7.2
 MAINTAINER Rafal Wesolowski <wesolyy@gmail.com>
 
 ADD .docker /opt/shopware
