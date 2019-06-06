@@ -20,6 +20,12 @@ mysql -udocker -pdocker -e "CREATE DATABASE IF NOT EXISTS shopware DEFAULT CHARA
 echo "Shopware:"
 git clone https://github.com/shopware/shopware.git /var/www/shopware
 
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+chmod +x composer.phar
+php composer.phar global require hirak/prestissimo
+
 chmod -Rf 0777 /var/www/shopware/var
 chmod -Rf 0777 /var/www/shopware/web
 chmod -Rf 0777 /var/www/shopware/files
