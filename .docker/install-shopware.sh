@@ -34,6 +34,9 @@ chmod -Rf 0777 /var/www/shopware/engine/Shopware/Plugins/Community
 
 cp /opt/shopware/build.properties /var/www/shopware/build/
 
+cd /var/www/shopware/
+git checkout 5.6
+
 cd /var/www/shopware/build
 ant build-unit
 
