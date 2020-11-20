@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  shopware:
+    image: nxswesolowski/shopware
+    volumes:
+      - ./:/var/www/shopware
+    ports:
+      - "80:80"
+      - "3336:3306"
+      - "2222:22"
+
+
